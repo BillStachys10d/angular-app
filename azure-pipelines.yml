@@ -34,12 +34,20 @@ steps:
 #    WebAppName: 'bill-angular'
 #    packageForLinux: '$(Pipeline.Workspace)'
 
-- task: AzureFileCopy@4
+#- task: AzureFileCopy@4
+#  inputs:
+#    SourcePath: '$(Pipeline.Workspace)'
+#    azureSubscription: 'Pay-As-You-Go(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
+#    Destination: 'AzureBlob'
+#    storage: 'filsharetest'
+#    ContainerName: '$web'
+#    BlobPrefix: 'light'
+
+- task: AzureCLI@2
   inputs:
-    SourcePath: '$(Pipeline.Workspace)'
-    azureSubscription: 'Pay-As-You-Go(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
-    Destination: 'AzureBlob'
-    storage: 'filsharetest'
-    ContainerName: '$web'
-    BlobPrefix: 'light'
+    azureSubscription: 'Pay-As-You-Go(1)(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
+    scriptType: bash
+    scriptLocation: 'inlinescript'
+    inlinescript: |
+      az storage blob upload-batch --account-name fdfiles --auth-mode key -d '$(Pipeline.Workspace)'
 
