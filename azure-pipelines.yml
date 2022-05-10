@@ -49,5 +49,7 @@ steps:
     scriptType: bash
     scriptLocation: 'inlinescript'
     inlinescript: |
-      az storage blob upload-batch --account-name fdfiles --auth-mode key -d '$(Pipeline.Workspace)'
+      az storage blob upload-batch --account-name fdfiles --auth-mode key -d '$web' --source '$(Pipeline.Workspace)'
 
+
+#--destination mycontainer --source <path-to-directory>
