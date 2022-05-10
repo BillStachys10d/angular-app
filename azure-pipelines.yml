@@ -37,7 +37,7 @@ steps:
 - task: AzureFileCopy@4
   inputs:
     SourcePath: '$(Pipeline.Workspace)'
-    azureSubscription: 'Pay-As-You-Go(2)(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
+    azureSubscription: 'Pay-As-You-Go(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
     Destination: 'AzureBlob'
     storage: 'filsharetest'
     ContainerName: '$web'
