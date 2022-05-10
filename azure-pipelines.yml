@@ -26,11 +26,20 @@ steps:
     artifact: 'Art'
     publishLocation: 'pipeline'
 
-- task: AzureRmWebAppDeployment@4
+#- task: AzureRmWebAppDeployment@4
+#  inputs:
+#    ConnectionType: 'AzureRM'
+#    azureSubscription: 'Pay-As-You-Go(1)(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
+#    appType: 'webApp'
+#    WebAppName: 'bill-angular'
+#    packageForLinux: '$(Pipeline.Workspace)'
+
+- task: AzureFileCopy@4
   inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Pay-As-You-Go(1)(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
-    appType: 'webApp'
-    WebAppName: 'bill-angular'
-    packageForLinux: '$(Pipeline.Workspace)'
+    SourcePath: '$(Pipeline.Workspace)'
+    azureSubscription: 'Pay-As-You-Go(2)(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
+    Destination: 'AzureBlob'
+    storage: 'filsharetest'
+    ContainerName: '$web'
+    BlobPrefix: 'light'
 
