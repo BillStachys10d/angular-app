@@ -26,13 +26,13 @@ steps:
     artifact: 'Art'
     publishLocation: 'pipeline'
 
-#- task: AzureRmWebAppDeployment@4
-#  inputs:
-#    ConnectionType: 'AzureRM'
-#    azureSubscription: 'Pay-As-You-Go(1)(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
-#    appType: 'webApp'
-#    WebAppName: 'bill-angular'
-#    packageForLinux: '$(Pipeline.Workspace)'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go(1)(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
+    appType: 'webApp'
+    WebAppName: 'bill-angular'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 
 #- task: AzureFileCopy@4
 #  inputs:
@@ -43,14 +43,14 @@ steps:
 #    ContainerName: '$web'
 #    BlobPrefix: 'light'
 
-- task: AzureCLI@2
-  inputs:
-    azureSubscription: 'Pay-As-You-Go(1)(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
-    
-    scriptType: bash
-    scriptLocation: 'inlinescript'
-    inlinescript: |
-      az storage blob upload-batch --account-name fdfiles --auth-mode key -d '$web' --source '$(Pipeline.Workspace)' --connection-string 'DefaultEndpointsProtocol=https;AccountName=filsharetest;AccountKey=y/oT2j7u3u8rZDKZ0qVOMWERFH/CRgToXYtsdRbm/tBnhWgm4uWUe1K0/BIOlqJrukiua4rBQAbO+AStP4DrWw==;EndpointSuffix=core.windows.net'
+#- task: AzureCLI@2
+#  inputs:
+#    azureSubscription: 'Pay-As-You-Go(1)(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
+#    
+#    scriptType: bash
+#    scriptLocation: 'inlinescript'
+#    inlinescript: |
+#      az storage blob upload-batch --account-name fdfiles --auth-mode key -d '$web' --source '$(Pipeline.Workspace)' --connection-string 'DefaultEndpointsProtocol=https;AccountName=filsharetest;AccountKey=y/oT2j7u3u8rZDKZ0qVOMWERFH/CRgToXYtsdRbm/tBnhWgm4uWUe1K0/BIOlqJrukiua4rBQAbO+AStP4DrWw==;EndpointSuffix=core.windows.net'
 
 
 #--destination mycontainer --source <path-to-directory>
