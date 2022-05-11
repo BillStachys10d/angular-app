@@ -34,13 +34,13 @@ steps:
 #    WebAppName: 'bill-angular'
 #    packageForLinux: '$(Pipeline.Workspace)'
 
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'Pay-As-You-Go(3)(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
-    appType: 'webApp'
-    appName: 'bill-angular'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    deploymentMethod: 'auto'
+#- task: AzureWebApp@1
+#  inputs:
+#    azureSubscription: 'Pay-As-You-Go(3)(171f5f8c-bcb9-4185-8aaf-60ffbd04f09f)'
+#    appType: 'webApp'
+#    appName: 'bill-angular'
+#    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+#    deploymentMethod: 'auto'
 
 
 
